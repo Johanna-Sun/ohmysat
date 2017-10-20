@@ -16,6 +16,7 @@ while(true)
 	$html=str_get_html($data);
 	$ret=$html->find('.nsat-home-testScoreDate');
 	// echo $ret[0];
+	echo "还没有 别急\n";
 	if($ret[0] != '<div class="nsat-home-testScoreDate">'.$argv[1].'</div>')
 	{
 		echo 'HOLY SHIT!!!';
