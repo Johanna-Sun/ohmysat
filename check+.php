@@ -15,11 +15,15 @@ while(true)
 	// echo $data;
 	$html=str_get_html($data);
 	$ret=$html->find('.nsat-home-testScoreDate');
-	echo $ret[0];
+	// echo $ret[0];
 	if($ret[0] != '<div class="nsat-home-testScoreDate">'.$argv[1].'</div>')
 	{
 		echo 'HOLY SHIT!!!';
+		for($i=0;$i<100;$i++){
+			echo exec('echo \'\a\'');
+		}
 		exec('echo \'出了！（\' | terminal-notifier -sound glass');
+		break;
 	}
 	sleep(10);
 }
