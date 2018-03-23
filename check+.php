@@ -23,7 +23,7 @@ while(true)
 	$ret=$html->find('div.nsat-home-test-info h3');
 	// echo $ret[0]->plaintext;
 	// echo 'SAT with Essay &mdash; '.$argv[1];
-	if($ret[1]->plaintext != 'SAT with Essay &mdash; '.$argv[1])
+	if($ret[0]->plaintext != 'SAT with Essay &mdash; '.$argv[1])
 	{
 		echo 'HOLY SHIT!!!';
 		for($i=0;$i<100;$i++){
