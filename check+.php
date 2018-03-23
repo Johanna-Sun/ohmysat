@@ -5,6 +5,8 @@ include_once('simple_html_dom.php');
 
 // var_dump($argv);
 
+$count = 1;
+
 while(true)
 {
 	$c=curl_init();
@@ -21,8 +23,7 @@ while(true)
 	$ret=$html->find('div.nsat-home-test-info h3');
 	// echo $ret[0]->plaintext;
 	// echo 'SAT with Essay &mdash; '.$argv[1];
-	echo "还没有 别急\n";
-	if($ret[0]->plaintext != 'SAT with Essay &mdash; '.$argv[1])
+	if($ret[1]->plaintext != 'SAT with Essay &mdash; '.$argv[1])
 	{
 		echo 'HOLY SHIT!!!';
 		for($i=0;$i<100;$i++){
@@ -31,6 +32,8 @@ while(true)
 		exec('echo \'出了！（\' | terminal-notifier -sound glass');
 		break;
 	}
+	echo "还没有 别急(已查".$count."次)\n";
+	$count += 1;
 	sleep(10);
 }
 
