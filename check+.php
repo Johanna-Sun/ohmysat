@@ -41,7 +41,6 @@ while(true)
 		exec('echo \'出了！（\' | terminal-notifier -sound glass');
 		break;
 	}
-	
 	$count += 1;
 	sleep(10);
 }
