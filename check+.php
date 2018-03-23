@@ -7,8 +7,11 @@ include_once('simple_html_dom.php');
 
 $count = 1;
 
+
 while(true)
 {
+	$flag = 0;
+
 	$c=curl_init();
 	$cookie=$argv[2];
 	curl_setopt($c, CURLOPT_URL, 'https://nsat.collegeboard.org/satweb/satHomeAction.action');
@@ -23,7 +26,13 @@ while(true)
 	$ret=$html->find('div.nsat-home-test-info h3');
 	// echo $ret[0]->plaintext;
 	// echo 'SAT with Essay &mdash; '.$argv[1];
-	if($ret[0]->plaintext != 'SAT with Essay &mdash; '.$argv[1])
+	foreach ($ret as $element) {
+		if($element->plaintext == 'SAT with Essay &mdash; '.$argv[1]) {
+			echo "还没有 别急(已查".$count."次)\n";
+			$flag = 1;
+		}
+	}
+	if($flag == 0)
 	{
 		echo 'HOLY SHIT!!!';
 		for($i=0;$i<100;$i++){
@@ -32,7 +41,7 @@ while(true)
 		exec('echo \'出了！（\' | terminal-notifier -sound glass');
 		break;
 	}
-	echo "还没有 别急(已查".$count."次)\n";
+	
 	$count += 1;
 	sleep(10);
 }
