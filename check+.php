@@ -22,10 +22,9 @@ while(true)
 	$html = new simple_html_dom();
 	// $html=str_get_html($data);
 	$html->load($data);
-	// var_dump($html);
 	$ret=$html->find('div.nsat-home-test-info h3');
-	// echo $ret[0]->plaintext;
 	// echo 'SAT with Essay &mdash; '.$argv[1];
+	echo $ret;
 	foreach ($ret as $element) {
 		if($element->plaintext == 'SAT with Essay &mdash; '.$argv[1]) {
 			echo "还没有 别急(已查".$count."次)\n";
